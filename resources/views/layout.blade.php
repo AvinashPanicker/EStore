@@ -94,19 +94,21 @@
                                     <nav>                                                
                                         <ul id="navigation">                                                                                                                                     
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="Catagori">Catagori</a></li>
+                                            <li><a href="blog">Category</a>
+                                                <ul class="submenu">
+                                                    @foreach ($cat as $item)
+                                                    <li><a href="blog">{{$item['name']}}</a></li>
+                                                    @endforeach
+
+                                                </ul>
+                                            </li>
                                             <li class="hot"><a href="#">Latest</a>
                                                 <ul class="submenu">
                                                     <li><a href="product_list"> Product list</a></li>
                                                     <li><a href="single-product"> Product Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="blog">Blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog">Blog</a></li>
-                                                    <li><a href="single-blog">Blog Details</a></li>
-                                                </ul>
-                                            </li>
+                                            
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
                                                     <li><a href="login">Login</a></li>
@@ -143,7 +145,12 @@
                                             <a href="cart"><i class="fas fa-shopping-cart"></i></a>
                                         </div>
                                     </li>
-                                   <li class="d-none d-lg-block"> <a href="#" class="btn header-btn">Sign in</a></li>
+                                    @guest
+                                   <li class="d-none d-lg-block"> <a href="/login" class="btn header-btn">Sign in</a></li>
+                                   @endguest
+                                   @auth
+                                   <li class="d-none d-lg-block"> <a href="/logout" class="btn header-btn">Log Out</a></li>
+                                   @endauth
                                 </ul>
                             </div>
                             <!-- Mobile Menu -->
