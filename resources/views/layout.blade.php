@@ -94,33 +94,39 @@
                                     <nav>                                                
                                         <ul id="navigation">                                                                                                                                     
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="blog">Category</a>
+                                            <li><a href="/category">Category</a>
                                                 <ul class="submenu">
-                                                    @foreach ($cat as $item)
-                                                    <li><a href="blog">{{$item['name']}}</a></li>
+                                                    @foreach ($categories as $category)
+                                                    <li><a href="/category/{{$category->id}}">{{$category['name']}}</a></li>
                                                     @endforeach
 
                                                 </ul>
                                             </li>
                                             <li class="hot"><a href="#">Latest</a>
                                                 <ul class="submenu">
-                                                    <li><a href="product_list"> Product list</a></li>
-                                                    <li><a href="single-product"> Product Details</a></li>
+                                                    <li><a href="/product_list"> Product list</a></li>
+                                                    <li><a href="/product_detail"> Product Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="/blog">Blog</a>
+                                                <ul class="submenu">
+                                                    <li><a href="/blog">Blog</a></li>
+                                                    <li><a href="/single-blog">Blog Details</a></li>
                                                 </ul>
                                             </li>
                                             
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
-                                                    <li><a href="login">Login</a></li>
-                                                    <li><a href="cart">Card</a></li>
-                                                    <li><a href="elements">Element</a></li>
-                                                    <li><a href="about">About</a></li>
-                                                    <li><a href="confirmation">Confirmation</a></li>
-                                                    <li><a href="cart">Shopping Cart</a></li>
-                                                    <li><a href="checkout">Product Checkout</a></li>
+                                                    <li><a href="/login">Login</a></li>
+                                                    <li><a href="/cart">Card</a></li>
+                                                    <li><a href="/elements">Element</a></li>
+                                                    <li><a href="/about">About</a></li>
+                                                    <li><a href="/confirmation">Confirmation</a></li>
+                                                    <li><a href="/cart">Shopping Cart</a></li>
+                                                    <li><a href="/checkout">Product Checkout</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact">Contact</a></li>
+                                            <li><a href="/contact">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -142,7 +148,7 @@
                                     </li>
                                     <li>
                                         <div class="shopping-card">
-                                            <a href="cart"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
                                         </div>
                                     </li>
                                     @guest

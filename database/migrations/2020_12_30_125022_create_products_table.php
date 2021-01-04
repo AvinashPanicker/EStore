@@ -21,7 +21,17 @@ class CreateProductsTable extends Migration
             $table->string('src');
             $table->integer('price');
             $table->integer('discount');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('shipper_id');
             $table->timestamps();
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
+            $table->foreign('shipper_id')
+                    ->references('id')
+                    ->on('shippers')
+                    ->onDelete('cascade');
         });
     }
 
@@ -34,4 +44,4 @@ class CreateProductsTable extends Migration
     {
         Schema::dropIfExists('products');
     }
-}
+}  

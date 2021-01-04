@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Models;
-use App\Models\Product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Shipper extends Model
 {
     use HasFactory;
-    protected $guarded=[];
-    public function product(){
+
+    public function product()
+    {
         return $this->hasMany(Product::class);
     }
 }

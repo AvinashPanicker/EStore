@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-
     <!-- slider Area Start-->
     <div class="slider-area ">
         <!-- Mobile Menu -->
@@ -22,22 +21,23 @@
   <div class="product_image_area">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-xl-8">
+        <div class="col-lg-12">
           <div class="product_img_slide owl-carousel">
             <div class="single_product_img">
-              <img src="{{$product->src}}" alt="#" class="img-fluid">
+              <img src="/img/product/single_product.png" alt="#" class="img-fluid">
             </div>
             <div class="single_product_img">
-              <img src="{{$product->src}}" alt="#" class="img-fluid">
+              <img src="/img/product/single_product.png" alt="#" class="img-fluid">
             </div>
             <div class="single_product_img">
-              <img src="{{$product->src}}" alt="#" class="img-fluid">
+              <img src="/img/product/single_product.png" alt="#" class="img-fluid">
             </div>
           </div>
         </div>
-        <div class="col-xl-8">
+        <div class="col-lg-8">
           <div class="single_product_text text-center">
-            <h3>{{$product->name}}</h3>
+            <h3>Foam filling cotton slow <br>
+                rebound pillows</h3>
             <p>
                 Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.
             </p>
@@ -49,7 +49,7 @@
                         <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
                         <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                     </div>
-                    <p>${{$product->discount}}</p>
+                    <p>$5</p>
                 </div>
               <div class="add_to_cart">
                   <a href="#" class="btn_3">add to cart</a>
@@ -60,59 +60,6 @@
       </div>
     </div>
   </div>
-  <div class="col-xl-8">
-    <h4>{{$product->comment->count()}} Comments</h4><br>
-    @forelse ($comments as $comment)
-        
-    <div class="col-lg-8">
-       <div class="single-comment justify-content-between d-flex">
-          <div class="user justify-content-between d-flex">
-             <div class="thumb">
-                <img src="/img/comment/comment_1.png" alt="">
-             </div>
-             <div class="desc">
-              
-                <p class="comment">
-                {{$comment->comment}}
-                </p>
-                <div class="d-flex justify-content-between">
-                   <div class="d-flex align-items-center">
-                      <h5>
-                         <h4>{{$comment->user->name}}</h4>
-                      </h5>
-                   </div>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
-    @empty
-    <p>No comments</p>
-        
-    @endforelse
- </div>
- <div>
-   <p>
-     This product is shipped by {{$product->shipper->name}}
-   </p>
-  </div>
-<div class="comment-form">
-    <h4>Leave a Reply</h4>
-    <form class="form-contact comment_form" action="#" id="commentForm">
-       <div class="row">
-          <div class="col-12">
-             <div class="form-group">
-                <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                   placeholder="Write Comment"></textarea>
-             </div>
-          </div>
-       </div>
-       <div class="form-group">
-          <button type="submit" class="button button-contactForm btn_1 boxed-btn">Post Comment</button>
-       </div>
-    </form>
- </div>
-    <!-- subscribe part end -->
   <!--================End Single Product Area =================-->
    <!-- subscribe part here -->
    <section class="subscribe_part section_padding">
@@ -130,7 +77,6 @@
               </div>
           </div>
       </div>
-      
   </section>
-  <!-- subscribe part end -->
+    
 @endsection

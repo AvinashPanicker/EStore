@@ -16,8 +16,8 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $pro=Product::all();
-        return view('index',compact('pro'));
+        $products=Product::all();
+        return view('index',compact('products'));
     }
     public function blog()
     {
@@ -31,10 +31,6 @@ class StoreController extends Controller
     {
         return view('cart');
     }
-    public function Catagori()
-    {
-        return view('Catagori');
-    }
     public function checkout()
     {
         return view('checkout');
@@ -47,10 +43,10 @@ class StoreController extends Controller
     {
         return view('elements');
     }
-    public function login()
-    {
-        return view('login');
+    public function confirmation(){
+        return view('confirmation');
     }
+
     public function single_blog()
     {
         return view('single-blog');
@@ -59,11 +55,19 @@ class StoreController extends Controller
     {
         return view('single-product');
     }
-    public function reg()
+    public function product_detail()
+    {
+        return view('productDetail');
+    }
+    public function login()
+    {
+        return view('login');
+    }
+    public function register()
     {
         return view('register');
     }
-    public function checklog(Request $request)
+    public function login_user(Request $request)
     {
         if (Auth::attempt(['email' => $request->email ,'password' => $request->password])){
             
@@ -71,7 +75,7 @@ class StoreController extends Controller
         }
         return redirect('/login');
     }
-    public function checkreg(Request $request)
+    public function register_user(Request $request)
     {
         $user=User::create([
             'name'=>$request->name,
@@ -79,7 +83,7 @@ class StoreController extends Controller
             'password'=>Hash::make($request->password)
         ]);
         $user->save();
-        return view('/');
+        return redirect('/login');
     }
     public function logout()
     {

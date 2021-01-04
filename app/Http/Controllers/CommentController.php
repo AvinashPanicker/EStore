@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 
-use App\Models\Product;
-use App\Models\User;
-use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-        return view('product_list',compact('products'));
+        //
     }
 
     /**
@@ -37,35 +35,35 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$product)
     {
-        //
+        $comment=Comment::create([
+            'comment'=>$request->comment,
+            'product_id'=>$product,
+            'user_id'=>Auth::id()
+        ]);
+        return redirect('/single-product/'.$product);
+        // return redirect('/');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Comment $comment)
     {
-        $comments=$product->comment;
-        // $u=Auth::User();
-
-        // dd($user);
-        // dd($comments);
-        // dd($pro);
-        return view('singleProduct',compact('product','comments'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -74,10 +72,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -85,10 +83,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Comment $comment)
     {
         //
     }
