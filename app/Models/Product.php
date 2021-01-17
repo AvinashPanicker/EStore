@@ -20,5 +20,13 @@ public function comment(){
 public function shipper(){
     return $this->belongsTo(Shipper::class);
 }
+
+public function seller(){
+    return $this->belongsToMany(Seller::class);
+}
+
+public function cart(){
+    return $this->belongsToMany(Cart::class);
+}
     
 }

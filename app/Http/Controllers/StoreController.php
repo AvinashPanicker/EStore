@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Cart;
 
 
 
@@ -29,7 +30,9 @@ class StoreController extends Controller
     }
     public function cart()
     {
-        return view('cart');
+        $user=Auth::User();
+        
+        return view('cart',compact('user'));
     }
     public function checkout()
     {
@@ -89,5 +92,12 @@ class StoreController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+    public function destroy($id)
+    {
+        $product=Product::find($id);
+        $cart=Auth::User()->cart;
+        $product->cart()->detach($cart->id);
+        return redirect('/cart');
     }
 }

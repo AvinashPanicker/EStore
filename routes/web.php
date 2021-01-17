@@ -24,6 +24,7 @@ Route::get('/confirmation','App\Http\Controllers\StoreController@confirmation');
 Route::get('/product_detail','App\Http\Controllers\StoreController@product_detail');
 
 Route::get('/cart','App\Http\Controllers\StoreController@cart')->middleware('user');
+Route::delete('/cart/{id}/delete','App\Http\Controllers\StoreController@destroy');
 Route::get('/login','App\Http\Controllers\StoreController@login');
 Route::post('/login','App\Http\Controllers\StoreController@login_user');
 Route::get('/register','App\Http\Controllers\StoreController@register');
@@ -31,10 +32,12 @@ Route::post('/register','App\Http\Controllers\StoreController@register_user');
 Route::get('/logout','App\Http\Controllers\StoreController@logout');
 
 Route::get('/category','App\Http\Controllers\CategoryController@index');
+Route::get('/category/new','App\Http\Controllers\CategoryController@new');
 Route::get('/category/{category}','App\Http\Controllers\CategoryController@show');
 
 Route::get('/product_list','App\Http\Controllers\ProductController@index');
 Route::get('/single-product/{product}','App\Http\Controllers\ProductController@show');
+Route::post('/single-product/{product}','App\Http\Controllers\ProductController@store')->middleware('user');
 
-Route::post('/single-product/{product}/newComment','App\Http\Controllers\CommentController@store');
+Route::post('/single-product/{product}/newComment','App\Http\Controllers\CommentController@store')->middleware('user');
 

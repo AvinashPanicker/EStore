@@ -67,12 +67,17 @@
                                     </ul>
                                 </div>
                                 <div class="header-info-right">
-                                   <ul>                                          
-                                       <li><a href="login">My Account </a></li>
-                                       <li><a href="product_list">Wish List  </a></li>
-                                       <li><a href="cart">Shopping</a></li>
-                                       <li><a href="cart">Cart</a></li>
-                                       <li><a href="checkout">Checkout</a></li>
+                                   <ul>  
+                                       @auth
+                                            <li><a href="/login">{{Auth::User()->name}}</a></li>
+                                       @endauth
+                                       @guest                                        
+                                            <li><a href="/login">My Account </a></li>
+                                       @endguest
+                                       <li><a href="/product_list">Wish List  </a></li>
+                                       <li><a href="/cart">Shopping</a></li>
+                                       <li><a href="/cart">Cart</a></li>
+                                       <li><a href="/checkout">Checkout</a></li>
                                    </ul>
                                 </div>
                             </div>
@@ -102,7 +107,7 @@
 
                                                 </ul>
                                             </li>
-                                            <li class="hot"><a href="#">Latest</a>
+                                            <li class="hot"><a href="#">Product</a>
                                                 <ul class="submenu">
                                                     <li><a href="/product_list"> Product list</a></li>
                                                     <li><a href="/product_detail"> Product Details</a></li>

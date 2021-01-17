@@ -19,8 +19,22 @@
                       <li><a href="#"><i class="fa fa-user"></i>Shipped by {{$product->shipper->name}}</a></li>
                       <li><a href="#"><i class="fa fa-comments"></i>{{$comments->count()}}</a></li>
                    </ul>
-                   <h5>
-                       Rating: {{$product->rating}}</h5>
+                   <div class="load_more_btn text-center">
+                      <form method='post' action=''>
+                        @csrf
+                        <button class="btn_3" type='submit'>Add to Cart</button>
+                      </form>
+                 </div>
+                   <h4>Sold By:</h4>
+                   @forelse($product->seller as $seller)
+                        {{$seller->name}}<br>
+                     @empty
+                        No Sellers Available
+                  @endforelse
+                  <br><br>
+
+                   <h2>
+                       Rating: {{$product->rating}}</h2>
                        <p>
                             <h2>${{$product->discount}}</h2>
                        </p>

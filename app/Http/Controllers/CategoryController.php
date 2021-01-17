@@ -87,4 +87,8 @@ class CategoryController extends Controller
     {
         //
     }
+    public function new(){
+        $products=Product::where('new',1);
+        return view('category',compact('products'));
+    }
 }

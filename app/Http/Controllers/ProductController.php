@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Product;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -37,9 +38,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($product)
     {
-        //
+        $user=Auth::User();
+        $cart=$user->cart;
+        $cart->product()->attach($product);
+        return redirect('/cart');
     }
 
     /**
@@ -51,12 +55,10 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $comments=$product->comment;
-        // $u=Auth::User();
+        $user=Auth::User();
 
         // dd($user);
-        // dd($comments);
-        // dd($pro);
-        return view('singleProduct',compact('product','comments'));
+        return view('singleProduct',compact('product','comments','user'));
     }
 
     /**
