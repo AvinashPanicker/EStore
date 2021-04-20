@@ -1,30 +1,30 @@
-EStore
+# EStore
 ::::::
 
-A Larevel personal project.
+## A Larevel personal project.
 
-The fourth commit includes:
+### The fourth commit includes:
 
-    *An addition in the Category Controller and the view 'Category' for viewing the products which have been branded "new".
-    *An addition in the Store Controller for the user to remove products from his cart. 
+    * An addition in the Category Controller and the view 'Category' for viewing the products which have been branded "new".
+    * An addition in the Store Controller for the user to remove products from his cart. 
     
-    *Model Cart -belongs to User
+    * Model Cart -belongs to User
                 -belongs to many Products
-    *Model Product has been updated to include relations:
+    * Model Product has been updated to include relations:
                                                         -belongs to many Cart
                                                         -belongs to many Seller
-    *Model Seller introduced with belongs to many relations to poducts.
-    *Model User updated to inculde has one relations with Cart.
+    * Model Seller introduced with belongs to many relations to poducts.
+    * Model User updated to inculde has one relations with Cart.
     
-    *Migration of Seller table with id,timestamp and name.
-    *Migration of pivot table product_seller with id and foreign keys product_id and seller_id
-    *Migration of the carts table with id and user_id.
-    *Migration of pivot table cart_product with id and foreign keys cart_id and product_id.
+    * Migration of Seller table with id,timestamp and name.
+    * Migration of pivot table product_seller with id and foreign keys product_id and seller_id
+    * Migration of the carts table with id and user_id.
+    * Migration of pivot table cart_product with id and foreign keys cart_id and product_id.
     
-    *Modification of the view "cart" for displaying the User details and user products.
-    *Updation in the view "layout" for displaying the user's name if logged in else display My account.
-    *Modified the view "single-product",which now displays the seller details if available and includes option to add the product to cart.
-    *web.php inludes routes for:
+    * Modification of the view "cart" for displaying the User details and user products.
+    * Updation in the view "layout" for displaying the user's name if logged in else display My account.
+    * Modified the view "single-product",which now displays the seller details if available and includes option to add the product to cart.
+    * web.php inludes routes for:
                             -Removing the product from cart
                             -Viewing the "new" products
                             -Adding a product to cart through the middleware user
